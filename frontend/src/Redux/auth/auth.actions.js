@@ -4,18 +4,34 @@ import {
   LOGIN_LOADING,
   LOGIN_SUCCESS,
   LOGOUT,
+  RESISTER_ERROR,
+  RESISTER_LOADING,
+  RESISTER_SUCCESS,
 } from "./auth.types";
+
+export const registerAPI = (data) => (dispatch) => {
+  dispatch({ type: RESISTER_LOADING});
+  axios
+    .post("http://localhost:4500/register", data)
+    .then((r) => {
+      dispatch({ type: RESISTER_SUCCESS});
+    })
+    .catch(() => {
+      dispatch({ type: RESISTER_ERROR });
+    });
+};
 
 // thunk which will help us
 export const loginAPI = (data) => (dispatch) => {
   dispatch({ type: LOGIN_LOADING });
   axios
-    .post("https://reqres.in/api/login", {
-      email: data.email,
-      password: data.password,
+    .post("http://localhost:4500/login", {
+      email:data.email,
+      password:data.password
     })
     .then((r) => {
-      dispatch({ type: LOGIN_SUCCESS, payload: r.data });
+     console.log("r",r.data);
+      dispatch({ type: LOGIN_SUCCESS, payload: r.data});
     })
     .catch(() => {
       dispatch({ type: LOGIN_ERROR });

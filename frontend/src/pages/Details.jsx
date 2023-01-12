@@ -6,8 +6,7 @@ import style from "../style/Details.module.css"
 const Details = () => {
   const dispatch = useDispatch();
   const { singledata, getBreeds } = useSelector((state) => state. breed);
- console.log("data1",singledata);
-  
+
   useEffect(() => {
     
       dispatch(getsingleBreedsAPI());

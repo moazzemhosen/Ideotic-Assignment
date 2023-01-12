@@ -3,6 +3,9 @@ import {
   LOGIN_LOADING,
   LOGIN_SUCCESS,
   LOGOUT,
+  RESISTER_ERROR,
+  RESISTER_LOADING,
+  RESISTER_SUCCESS,
 } from "./auth.types";
 
 let token = localStorage.getItem("token");
@@ -11,6 +14,7 @@ const initalState = {
   error: false,
   isAuth: !!token,
   token: token,
+  
 };
 
 export const authReducer = (state = initalState, { type, payload }) => {
@@ -25,11 +29,26 @@ export const authReducer = (state = initalState, { type, payload }) => {
         loading: false,
         error: false,
         isAuth: true,
-        token: payload.token,
+        token: payload,
       };
     }
     case LOGIN_ERROR: {
       return { ...state, loading: false, error: true, isAuth: false };
+    }
+    case RESISTER_LOADING: {
+      return { ...state, loading: true, error: false };
+    }
+    case RESISTER_SUCCESS: {
+      
+      return {
+        ...state,
+        loading: false,
+        error: false,
+        
+      };
+    }
+    case RESISTER_ERROR: {
+      return { ...state, loading: false, error: true };
     }
     case LOGOUT: {
       localStorage.removeItem("token");

@@ -1,16 +1,18 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { logoutAPI } from "../Redux/auth/auth.actions";
+import style from "../style/Navbar.module.css"
 
 const Navbar = () => {
   const dispatch = useDispatch();
   const { isAuth } = useSelector((state) => state.auth);
   const handleLoginClick = () => {
     dispatch(logoutAPI());
+    
   };
   return (
-    <div>
+    <div className={style.nav}>
       <Link to="/login">
         <div>Login</div>
       </Link>

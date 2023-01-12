@@ -5,7 +5,7 @@ import { GET_BREEDS_ERROR, GET_BREEDS_LOADING, GET_BREEDS_SUCCESS, GET_SINGLE_BR
 export const getBreedsAPI = () => (dispatch) => {
   dispatch({ type: GET_BREEDS_LOADING });
   axios
-    .get("https://dog.ceo/api/breeds/image/random/9")
+    .get("https://dog.ceo/api/breeds/image/random/27")
     .then((r) => {
       //console.log("res",r.data.message);
        dispatch({ type: GET_BREEDS_SUCCESS, payload: r.data.message });

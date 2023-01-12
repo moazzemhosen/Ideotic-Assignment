@@ -3,6 +3,7 @@ import style from "../style/ImageCard.module.css"
 import { useNavigate } from 'react-router-dom'
 
 const ImageCard = ({data}) => {
+  console.log(data);
     const navigate=useNavigate()
     const handleclick=()=>{
         navigate("/details")
